@@ -1,0 +1,22 @@
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../assets/logo.png";
+
+const menus = ['Home', 'Layanan', 'Doktor', 'Testimoni', 'Lokasi'];
+---
+<div id="navbar" class="sticky top-0 flex justify-between items-center px-8 py-4">
+  <Image src={Logo} alt="Astro logo" width={100} />
+
+  <nav>
+    <ul class="flex gap-4">
+      {menus.map((menu) => (
+        <li class="hover:bg-[#24B9CC] hover:text-white py-2 px-4 rounded-full">
+          <a href={`#${menu.toLowerCase()}`}>
+            {menu}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <button class="bg-[#24B9CC] text-white font-medium py-2 px-4 rounded-full cursor-pointer hover:bg-[#24B9CC]/80">Buat Janji Temu</button>
+</div>

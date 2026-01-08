@@ -1,0 +1,47 @@
+---
+const services = [
+  {
+    "title": "Pemeriksaan & Konsultasi Gigi",
+    "description": "Pemeriksaan menyeluruh untuk menentukan kondisi gigi dan mulut Anda.",
+  },
+  {
+    "title": "Tambal & Cabut Gigi",
+    "description": "Perawatan gigi berlubang dan gigi bermasalah dengan prosedur yang aman.",
+  },
+  {
+    "title": "Scaling & Pembersihan Karang Gigi",
+    "description": "Menjaga kesehatan gusi dan mencegah bau mulut.",
+  },
+  {
+    "title": "Perawatan Saluran Akar",
+    "description": "Solusi tepat untuk gigi yang sakit tanpa harus dicabut.",
+  },
+  {
+    "title": "Behel & Perawatan Ortodonti",
+    "description": "Meratakan gigi untuk fungsi dan estetika.",
+  },
+  {
+    "title": "Pemutihan & Estetika Gigi",
+    "description": "Membantu Anda mendapatkan senyum yang lebih cerah dan percaya diri.",
+  }
+]
+
+---
+
+<section id="about" class="mt-24 flex flex-col justify-center items-center gap-12">
+    <div class="max-w-xl space-y-6 flex flex-col items-center text-center">
+		<p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] p-2 w-fit rounded-full">Layanan</p>
+		<h1 class="font-black text-4xl">Layanan Perawatan Gigi Kami</h1>
+	</div>
+    <div class="flex flex-wrap justify-center items-center gap-6">
+        {services.map((service) => (
+            <div class="flex flex-col gap-2 w-92 h-56 rounded-xl p-6 bg-[#D3F8FD]">
+                <h3 class="font-semibold text-lg">{service.title}</h3>
+                <p class="text-slate-600">{service.description}</p>
+                <div class="mt-auto flex justify-end">
+                    <button class="bg-[#24B9CC] text-white font-medium py-2 px-4 rounded-full cursor-pointer hover:bg-[#24B9CC]/80">Buat Janji Temu</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

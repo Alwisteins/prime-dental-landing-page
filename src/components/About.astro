@@ -1,0 +1,16 @@
+---
+import Image from "astro/components/Image.astro";
+import AboutImg from "../assets/images/about.webp";
+---
+
+<section id="about" class="mt-24 flex justify-center items-center gap-12">
+    <div>
+		<Image src={AboutImg} alt="Hero Image" width={400} />
+	</div>
+	<div class="max-w-xl space-y-6">
+		<p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] p-2 w-fit rounded-full">Tentang Klinik</p>
+		<h1 class="font-black text-4xl">Perawatan Gigi yang Aman, Nyaman, dan Profesional</h1>
+		<p class="text-slate-600">Kami adalah klinik gigi yang berfokus pada kesehatan, estetika, dan kenyamanan pasien.
+            Dengan pendekatan ramah dan edukatif, kami memastikan setiap pasien memahami kondisi giginya dan mendapatkan perawatan terbaik sesuai kebutuhan.</p>
+	</div>
+</section>

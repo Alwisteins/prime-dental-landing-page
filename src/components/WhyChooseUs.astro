@@ -1,0 +1,27 @@
+---
+import Image from "astro/components/Image.astro";
+import CheckIcon from "../assets/icon/check-circle.svg";
+const whyChooseUs = [
+  "Ditangani oleh Dokter Gigi Bersertifikat",
+  "Menggunakan Peralatan Modern & Steril",
+  "Pelayanan Ramah dan Transparan",
+  "Jadwal Fleksibel & Proses Efisien",
+  "Cocok untuk Anak-anak hingga Dewasa"
+]
+
+---
+
+<section id="about" class="mt-24 flex flex-col justify-center items-center gap-12">
+    <div class="max-w-xl space-y-6 flex flex-col items-center text-center">
+		<p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] p-2 w-fit rounded-full">Why choose us</p>
+		<h1 class="font-black text-4xl">Kenapa memilih klinik kami?</h1>
+	</div>
+    <div class="grid grid-cols-3 gap-x-24 gap-y-12">
+        {whyChooseUs.map((value) => (
+            <div class="flex items-center gap-2 w-72">
+                <Image src={CheckIcon} alt="Check Icon" width={52} />
+                <h3 class="font-medium text-md">{value}</h3>
+            </div>
+        ))}
+    </div>
+</section>

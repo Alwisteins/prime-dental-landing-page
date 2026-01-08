@@ -1,0 +1,23 @@
+---
+import Image from "astro/components/Image.astro";
+import ToothImg from '../assets/icon/tooth.svg';
+import HappyFaceImg from '../assets/icon/happy-face.svg';
+import StethoscopeImg from '../assets/icon/stethoscope.svg';
+import ChronometerImg from '../assets/icon/chronometer.svg';
+
+const stats = [
+    { title: 'Dokter gigi berpengalaman', img: ToothImg },
+    { title: 'Alat steril & standar medis', img: StethoscopeImg },
+    { title: '1.000+ Pasien Puas', img: HappyFaceImg },
+    { title: 'Proses cepat & nyaman', img: ChronometerImg },
+];
+---
+
+<section id="stats" class="mt-12 bg-[#24B9CC] flex justify-center items-center gap-12 p-12">
+        {stats.map((stat) => (
+            <div class="flex gap-4 text-white font-medium text-lg w-52">
+                <Image src={stat.img} alt={stat.title} width={50} />
+                <p>{stat.title}</p>
+            </div>
+        ))}
+</section>
