@@ -1,0 +1,38 @@
+---
+import Accordion from "./Accordion.astro";
+
+const faqs = [
+  {
+    question: "Apakah Perlu Melakukan Reservasi Terlebih Dahulu?",
+    answer: "Ya, kami menyarankan reservasi agar pelayanan lebih optimal."
+  },
+  {
+    question: "Apakah Perawatan Gigi Terasa Sakit?",
+    answer: "Kami menggunakan teknik dan alat modern untuk meminimalkan rasa tidak nyaman."
+  },
+  {
+    question: "Apakah Melayani Pasien Anak-Anak?",
+    answer: "Tentu, kami menyediakan perawatan khusus anak dengan pendekatan ramah."
+  }
+];
+---
+
+<section
+  id="FAQ"
+  class="mt-24 px-6 md:px-12 lg:px-20 flex flex-col md:flex-row justify-center items-start gap-12"
+>
+  <div class="space-y-6 max-w-md text-center md:text-left">
+    <p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] px-4 py-2 w-fit mx-auto md:mx-0 rounded-full">
+      FAQ
+    </p>
+    <h1 class="font-black text-3xl sm:text-4xl">
+      Pertanyaan yang Sering Diajukan
+    </h1>
+  </div>
+
+  <div class="w-full max-w-xl space-y-4">
+    {faqs.map(faq => (
+      <Accordion question={faq.question} answer={faq.answer} />
+    ))}
+  </div>
+</section>

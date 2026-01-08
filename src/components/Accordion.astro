@@ -1,0 +1,61 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<div class="accordion-item border border-[#24B9CC] bg-[#EBFDFF] rounded-3xl mb-4 overflow-hidden">
+  <button 
+    class="accordion-button w-full flex justify-between items-center gap-6 p-6 text-left transition-all hover:bg-cyan-50"
+    aria-expanded="false"
+  >
+    <span class="text-lg font-medium text-slate-800">{question}</span>
+    <div class="icon-wrapper bg-cyan-400 p-2 rounded-full transition-transform duration-300">
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        class="h-6 w-6 text-white transition-transform duration-300" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </button>
+  
+  <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+    <div class="px-6 pb-6 text-slate-600 leading-relaxed italic">
+      {answer}
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupAccordion() {
+    const buttons = document.querySelectorAll('.accordion-button');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        const content = button.nextElementSibling as HTMLElement;
+        const icon = button.querySelector('svg');
+
+        button.setAttribute('aria-expanded', (!expanded).toString());
+        
+        if (!expanded) {
+          content.style.maxHeight = content.scrollHeight + "px";
+          icon?.classList.add('rotate-180');
+        } else {
+          content.style.maxHeight = "0px";
+          icon?.classList.remove('rotate-180');
+        }
+      });
+    });
+  }
+
+  setupAccordion();
+  document.addEventListener('astro:after-swap', setupAccordion);
+</script>

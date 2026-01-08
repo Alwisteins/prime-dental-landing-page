@@ -6,18 +6,23 @@ import StethoscopeImg from '../assets/icon/stethoscope.svg';
 import ChronometerImg from '../assets/icon/chronometer.svg';
 
 const stats = [
-    { title: 'Dokter gigi berpengalaman', img: ToothImg },
-    { title: 'Alat steril & standar medis', img: StethoscopeImg },
-    { title: '1.000+ Pasien Puas', img: HappyFaceImg },
-    { title: 'Proses cepat & nyaman', img: ChronometerImg },
+  { title: 'Dokter gigi berpengalaman', img: ToothImg },
+  { title: 'Alat steril & standar medis', img: StethoscopeImg },
+  { title: '1.000+ Pasien Puas', img: HappyFaceImg },
+  { title: 'Proses cepat & nyaman', img: ChronometerImg },
 ];
 ---
 
-<section id="stats" class="mt-12 bg-[#24B9CC] flex justify-center items-center gap-12 p-12">
-        {stats.map((stat) => (
-            <div class="flex gap-4 text-white font-medium text-lg w-52">
-                <Image src={stat.img} alt={stat.title} width={50} />
-                <p>{stat.title}</p>
-            </div>
-        ))}
+<section
+  id="stats"
+  class="bg-[#24B9CC] py-10 px-6 mt-12"
+>
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    {stats.map((stat) => (
+      <div class="flex items-center gap-4 text-white font-medium text-base md:text-lg">
+        <Image src={stat.img} alt={stat.title} width={48} class="shrink-0" />
+        <p>{stat.title}</p>
+      </div>
+    ))}
+  </div>
 </section>

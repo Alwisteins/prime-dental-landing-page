@@ -1,0 +1,64 @@
+---
+const testimoni = [
+  {
+    name: "Sarah A.",
+    review: "Awalnya saya takut ke dokter gigi, tapi dokter di sini sangat ramah dan prosedurnya cepat. Gigi saya bersih tanpa rasa sakit. Saya pasti akan kembali!",
+    treatment: "Scaling & Polishing"
+  },
+  {
+    name: "Fajar B.",
+    review: "Layanannya profesional dan dijelaskan dengan jelas sejak awal. Tambalannya rapi dan nyaman. Kliniknya juga bersih dan modern.",
+    treatment: "Tambal Gigi"
+  },
+  {
+    name: "Rika T.",
+    review: "Saya sudah memakai kawat gigi di sini selama enam bulan, dan hasilnya benar-benar terlihat. Pemeriksaannya rutin, dan dokternya sangat sabar menjawab pertanyaan.",
+    treatment: "Kawat Gigi / Ortodonti"
+  },
+  {
+    name: "Andi P.",
+    review: "Proses pencabutan gigi cepat dan tidak sakit. Kliniknya bersih, dan peralatannya modern, membuat saya merasa tenang sebagai pasien.",
+    treatment: "Pencabutan Gigi"
+  },
+  {
+    name: "Maya W.",
+    review: "Saya mencoba pemutihan gigi di sini dan hasilnya luar biasa. Gigi jadi jauh lebih cerah secara natural dan prosesnya tidak ngilu sama sekali.",
+    treatment: "Pemutihan Gigi"
+  },
+  {
+    name: "Budi S.",
+    review: "Mengantar orang tua untuk pasang gigi palsu. Hasilnya sangat pas dan nyaman dipakai makan. Dokternya sangat teliti menyesuaikan ukuran.",
+    treatment: "Gigi Palsu"
+  }
+]
+---
+
+<section
+  id="testimoni"
+  class="mt-24 px-6 md:px-12 lg:px-20 flex flex-col justify-center items-center gap-12"
+>
+  <div class="max-w-2xl space-y-6 flex flex-col items-center md:items-end text-center md:text-right w-full">
+    <p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] px-4 py-2 w-fit rounded-full">
+      Testimoni
+    </p>
+    <h1 class="font-black text-3xl sm:text-4xl">
+      Apa Kata Pasien Kami
+    </h1>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
+    {testimoni.map((testi) => (
+      <div class="flex flex-col p-6 rounded-xl bg-[#EBFDFF] border border-[#24B9CC] min-h-55">
+        <p class="font-semibold">
+          {testi.name}
+        </p>
+        <p class="my-auto text-sm text-slate-600 italic leading-relaxed">
+          "{testi.review}"
+        </p>
+        <p class="font-medium text-right text-[#24B9CC]">
+          {testi.treatment}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>

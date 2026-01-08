@@ -4,17 +4,39 @@ import HeroImg from '../assets/images/hero.webp';
 import Image from "astro/components/Image.astro";
 ---
 
-<section id="hero" class="min-h-screen flex justify-center items-center">
-	<div class="max-w-xl space-y-6">
-		<p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] p-2 w-fit rounded-full">#1 Klinik gigi di Pemalang</p>
-		<h1 class="font-black text-5xl">Klinik Gigi Keluarga dengan Dokter Berpengalaman</h1>
-		<p class="text-slate-600 max-w-lg">Klinik gigi modern dengan dokter berpengalaman, teknologi terkini, dan layanan nyaman untuk seluruh keluarga.</p>
-		<div class="flex gap-6">
-			<button class="bg-[#24B9CC] text-white font-medium py-2 px-4 rounded-full cursor-pointer hover:bg-[#24B9CC]/80">Buat Janji Temu</button>
-			<button class="text-[#24B9CC] border-2 border-[#24B9CC] font-medium py-2 px-4 rounded-full cursor-pointer hover:bg-[#24B9CC]/10">Konsult ke Whatsapp</button>
-		</div>
-	</div>
-	<div>
-		<Image src={HeroImg} alt="Hero Image" width={400} />
-	</div>
+<section
+  id="home"
+  class="min-h-screen flex flex-col-reverse md:flex-row justify-center items-center gap-12 px-6 md:px-12 lg:px-20 pt-32 md:pt-40"
+>
+  <div class="max-w-xl space-y-6 text-center md:text-left">
+    <p class="text-[#24B9CC] text-sm font-medium bg-[#D3F8FD] px-4 py-2 w-fit mx-auto md:mx-0 rounded-full">
+      #1 Klinik gigi di Pemalang
+    </p>
+
+    <h1 class="font-black text-4xl md:text-5xl leading-tight">
+      Klinik Gigi Keluarga dengan Dokter Berpengalaman
+    </h1>
+
+    <p class="text-slate-600 max-w-lg mx-auto md:mx-0">
+      Klinik gigi modern dengan dokter berpengalaman, teknologi terkini, dan layanan nyaman untuk seluruh keluarga.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+      <button class="bg-[#24B9CC] text-white font-medium py-3 px-6 rounded-full hover:bg-[#24B9CC]/80 transition">
+        Buat Janji Temu
+      </button>
+      <button class="text-[#24B9CC] border-2 border-[#24B9CC] font-medium py-3 px-6 rounded-full hover:bg-[#24B9CC]/10 transition">
+        Konsult ke Whatsapp
+      </button>
+    </div>
+  </div>
+
+  <div class="flex justify-center w-full md:w-auto">
+    <Image
+      src={HeroImg}
+      alt="Hero Image"
+      width={420}
+      class="w-72 sm:w-80 md:w-105"
+    />
+  </div>
 </section>
