@@ -7,4 +7,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  site: "https://Alwisteins.github.io",
+  base: "/prime-dental-landing-page/",
+  build: {
+    assets: "_astro",
+  },
 });
