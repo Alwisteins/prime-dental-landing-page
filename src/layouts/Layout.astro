@@ -8,17 +8,51 @@ import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import '@fontsource/poppins/800.css';
 import '@fontsource/poppins/900.css';
+import { SEO } from 'astro-seo';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Prime Dental | #1 Klinik gigi di Pemalang</title>
-	</head>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	  
+		<SEO
+		  title="Prime Dental Pemalang | Klinik Gigi Terbaik & Profesional"
+		  description="Prime Dental adalah klinik gigi terpercaya di Pemalang dengan dokter berpengalaman, teknologi modern, serta perawatan gigi anak dan dewasa."
+		  canonical="https://primedentalpemalang.com"
+		  openGraph={{
+			basic: {
+			  title: "Prime Dental Pemalang | Klinik Gigi Terbaik & Profesional",
+			  type: "website",
+			  image: "https://primedentalpemalang.com/og-image.jpg",
+			  url: "https://primedentalpemalang.com",
+			},
+			optional: {
+			  description:
+				"Klinik gigi profesional di Pemalang dengan pelayanan ramah dan teknologi modern.",
+			  siteName: "Prime Dental Pemalang",
+			  locale: "id_ID",
+			},
+		  }}
+		  twitter={{
+			card: "summary_large_image",
+			title: "Prime Dental Pemalang | Klinik Gigi Terbaik",
+			description:
+			  "Klinik gigi terbaik di Pemalang dengan dokter berpengalaman dan teknologi modern.",
+			image: "https://primedentalpemalang.com/og-image.jpg",
+		  }}
+		  extend={{
+			meta: [
+			  { name: "keywords", content: "klinik gigi pemalang, dokter gigi pemalang, prime dental, scaling gigi pemalang, tambal gigi pemalang, behel pemalang" },
+			  { name: "author", content: "Prime Dental Pemalang" },
+			  { name: "robots", content: "index, follow" },
+			],
+		  }}
+		/>
+	</head>	  
 	<body>
 		<slot />
 	</body>
