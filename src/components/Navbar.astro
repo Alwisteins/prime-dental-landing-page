@@ -39,12 +39,15 @@ const menus = ['Home', 'Layanan', 'Doktor', 'Testimoni'];
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
     <ul class="flex flex-col gap-2 p-4">
       {menus.map((menu) => (
-        <li class="py-2 px-4 rounded hover:bg-[#24B9CC] hover:text-white">
-          <a href={`#${menu.toLowerCase()}`}>
+        <li class="rounded">
+          <a
+            href={`#${menu.toLowerCase()}`}
+            class="block w-full py-2 px-4 rounded hover:bg-[#24B9CC] hover:text-white"
+          >
             {menu}
           </a>
         </li>
-      ))}
+      ))}      
       <button class="mt-2 bg-[#24B9CC] text-white py-2 rounded-full">
         Buat Janji Temu
       </button>

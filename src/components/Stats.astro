@@ -17,9 +17,9 @@ const stats = [
   id="stats"
   class="bg-[#24B9CC] py-10 px-6 mt-12"
 >
-  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div class="max-w-7xl mx-auto justify-items-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     {stats.map((stat) => (
-      <div class="flex items-center gap-4 text-white font-medium text-base md:text-lg">
+      <div class="w-55 flex items-center gap-4 text-white font-medium text-base md:text-lg">
         <Image src={stat.img} alt={stat.title} width={48} class="shrink-0" />
         <p>{stat.title}</p>
       </div>
