@@ -13,20 +13,21 @@ const whyChooseUs = [
 
 <section
   id="about"
+  data-whychooseus
   class="mt-24 px-6 md:px-12 lg:px-20 flex flex-col justify-center items-center gap-12"
 >
   <div class="max-w-xl space-y-6 flex flex-col items-center text-center">
-    <p class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit rounded-full">
+    <p id="whychooseus-tagline" class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit rounded-full">
       Why choose us
     </p>
-    <h1 class="font-black text-3xl sm:text-4xl">
+    <h1 id="whychooseus-title" class="font-black text-3xl sm:text-4xl">
       Kenapa memilih klinik kami?
     </h1>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8 max-w-7xl w-full">
     {whyChooseUs.map((value) => (
-      <div class="flex items-start gap-3">
+      <div data-value class="flex items-start gap-3">
         <Image src={CheckIcon} alt="Check Icon" width={36} class="shrink-0" />
         <p class="font-medium text-base leading-snug">
           {value}
@@ -35,3 +36,44 @@ const whyChooseUs = [
     ))}
   </div>
 </section>
+<script>
+  import { animate } from 'animejs';
+
+  const target = document.querySelector('[data-whychooseus]');
+  const items = document.querySelectorAll('[data-value]');
+
+  if (target) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          ['#whychooseus-tagline', '#whychooseus-title'].forEach((selector, index) => {
+            animate(selector, {
+              translateY: [50, 0],
+              opacity: [0, 1],
+              duration: 1000,
+              delay: index * 200,
+              easing: 'easeOutQuint'
+            })
+          });
+
+          items.forEach((el, index) => {
+            animate(el, {
+              opacity: [0, 1],
+              translateY: [50, 0],
+              delay: index * 300,
+              duration: 1000,
+              easing: 'easeOutQuad'
+            });
+          })
+
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(target);
+  }
+</script>

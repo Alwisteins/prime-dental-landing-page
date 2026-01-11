@@ -10,10 +10,8 @@ const menus = ['Home', 'Layanan', 'Doktor', 'Testimoni'];
   class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent"
 >
   <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-    <!-- Logo -->
     <Image src={Logo} alt="Logo" width={100} />
 
-    <!-- Desktop Menu -->
     <nav class="hidden md:block">
       <ul class="flex gap-4 items-center">
         {menus.map((menu) => (
@@ -26,7 +24,6 @@ const menus = ['Home', 'Layanan', 'Doktor', 'Testimoni'];
       </ul>
     </nav>
 
-    <!-- CTA Desktop -->
     <button class="hidden md:block bg-[#24B9CC] text-white py-2 px-4 rounded-full hover:bg-[#24B9CC]/80 transition">
       Buat Janji Temu
     </button>
@@ -55,12 +52,45 @@ const menus = ['Home', 'Layanan', 'Doktor', 'Testimoni'];
   </div>
 </header>
 <script>
+  import { animate, stagger } from 'animejs';
+
   const navbar = document.getElementById('navbar');
   const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
 
+  animate('#navbar', {
+    translateY: [-20, 0],
+    opacity: [0, 1],
+    duration: 800,
+    easing: 'ease-out',
+  });
+
+  let menuOpen = false;
+
   btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+    if (!menuOpen) {
+      menu?.classList.remove('hidden');
+
+      animate('#mobile-menu li, #mobile-menu button', {
+        translateY: [-10, 0],
+        opacity: [0, 1],
+        delay: stagger(80),
+        duration: 400,
+        easing: 'ease-out',
+      });
+    } else {
+      animate('#mobile-menu', {
+        opacity: [1, 0],
+        duration: 200,
+        easing: 'ease-in',
+        complete: () => {
+          menu?.classList.add('hidden');
+          menu ? menu.style.opacity = '' : null;
+        },
+      });
+    }
+
+    menuOpen = !menuOpen;
   });
 
   window.addEventListener('scroll', () => {
@@ -71,3 +101,4 @@ const menus = ['Home', 'Layanan', 'Doktor', 'Testimoni'];
     }
   });
 </script>
+

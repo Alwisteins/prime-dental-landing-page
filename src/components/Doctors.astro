@@ -60,20 +60,21 @@ const doctors = [
 
 <section
   id="doktor"
+  data-doctors
   class="mt-24 px-6 md:px-12 lg:px-20 flex flex-col justify-center items-center gap-12"
 >
   <div class="max-w-xl space-y-6 flex flex-col items-center text-center">
-    <p class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit rounded-full">
+    <p id="doctor-tagline" class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit rounded-full">
       Doktor Kami
     </p>
-    <h1 class="font-black text-3xl sm:text-4xl">
+    <h1 id="doctor-title" class="font-black text-3xl sm:text-4xl">
       Ditangani oleh Dokter Gigi Profesional
     </h1>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-7xl">
     {doctors.map((doctor) => (
-      <div class="flex flex-col sm:flex-row sm:items-center gap-6 p-6 rounded-xl bg-[#24B9CC]">
+      <div data-doctor class="flex flex-col sm:flex-row sm:items-center gap-6 p-6 rounded-xl bg-[#24B9CC]">
         <div class="flex justify-center">
           <Image
             src={doctor.image}
@@ -111,3 +112,44 @@ const doctors = [
     ))}
   </div>
 </section>
+<script>
+  import { animate } from 'animejs';
+
+  const target = document.querySelector('[data-doctors]');
+  const items = document.querySelectorAll('[data-doctor]');
+
+  if (target) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          ['#doctor-tagline', '#doctor-title'].forEach((selector, index) => {
+            animate(selector, {
+              translateY: [50, 0],
+              opacity: [0, 1],
+              duration: 1000,
+              delay: index * 200,
+              easing: 'easeOutQuint'
+            })
+          });
+
+          items.forEach((el, index) => {
+            animate(el, {
+              opacity: [0, 1],
+              translateY: [50, 0],
+              delay: index * 300,
+              duration: 1000,
+              easing: 'easeOutQuad'
+            });
+          })
+
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(target);
+  }
+</script>

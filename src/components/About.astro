@@ -6,8 +6,9 @@ import AboutImg from "../assets/images/about.webp";
 <section
   id="about"
   class="mt-24 px-6 md:px-12 lg:px-20 flex flex-col md:flex-row justify-center items-center gap-12"
+  data-animate
 >
-  <div class="w-full md:w-auto flex justify-center">
+  <div id="about-img" class="w-full md:w-auto flex justify-center opacity-0">
     <Image
       src={AboutImg}
       alt="Clinic Building"
@@ -17,18 +18,55 @@ import AboutImg from "../assets/images/about.webp";
   </div>
 
   <div class="max-w-xl space-y-6 text-center md:text-left">
-    <p class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit mx-auto md:mx-0 rounded-full">
+    <p id="about-tagline" class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit mx-auto md:mx-0 rounded-full">
       Tentang Klinik
     </p>
 
-    <h1 class="font-black text-3xl sm:text-4xl leading-tight">
+    <h1 id="about-title" class="font-black text-3xl sm:text-4xl leading-tight">
       Perawatan Gigi yang Aman, Nyaman, dan Profesional
     </h1>
 
-    <p class="text-slate-600 leading-relaxed">
+    <p id="about-description" class="text-slate-600 leading-relaxed">
       Kami adalah klinik gigi yang berfokus pada kesehatan, estetika, dan kenyamanan pasien.
       Dengan pendekatan ramah dan edukatif, kami memastikan setiap pasien memahami kondisi giginya
       dan mendapatkan perawatan terbaik sesuai kebutuhan.
     </p>
   </div>
 </section>
+<script>
+  import { animate } from 'animejs';
+
+  const target = document.querySelector('[data-animate]');
+
+  if (target) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          animate('#about-img', {
+            translateX: [-100, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            easing: 'easeOutQuint'
+          });
+
+          ['#about-tagline', '#about-title', '#about-description'].forEach((selector, index) => {
+            animate(selector, {
+              translateY: [50, 0],
+              opacity: [0, 1],
+              duration: 1000,
+              delay: index * 200,
+              easing: 'easeOutQuint'
+            })
+          });
+
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(target);
+  }
+</script>

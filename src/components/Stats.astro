@@ -19,10 +19,40 @@ const stats = [
 >
   <div class="max-w-7xl mx-auto justify-items-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     {stats.map((stat) => (
-      <div class="w-55 flex items-center gap-4 text-white font-medium text-base md:text-lg">
+      <div data-stat class="w-55 flex items-center gap-4 text-white font-medium text-base md:text-lg">
         <Image src={stat.img} alt={stat.title} width={48} class="shrink-0" />
         <p>{stat.title}</p>
       </div>
     ))}
   </div>
 </section>
+<script>
+  import { animate } from "animejs";
+
+  const items = document.querySelectorAll('[data-stat]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        const index = [...items].indexOf(el);
+
+        animate(el, {
+          opacity: [0, 1],
+          translateY: [50, 0],
+          delay: index * 200,
+          duration: 800,
+          easing: 'easeOutQuad'
+        });
+
+        observer.unobserve(el);
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  items.forEach((el) => observer.observe(el));
+</script>
+

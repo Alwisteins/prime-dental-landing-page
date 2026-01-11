@@ -6,22 +6,22 @@ import Image from "astro/components/Image.astro";
 
 <section
   id="home"
-  class="min-h-screen flex flex-col-reverse md:flex-row justify-center items-center gap-12 px-6 md:px-12 lg:px-20 pt-32 md:pt-40"
+  class="flex flex-col-reverse md:flex-row justify-center items-center gap-12 px-6 md:px-12 lg:px-20 pt-32 md:pt-24"
 >
   <div class="max-w-xl space-y-6 text-center md:text-left">
-    <p class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit mx-auto md:mx-0 rounded-full">
+    <p id="tagline" class="text-[#24B9CC] text-sm font-medium bg-[#e7fcff] border border-[#24B9CC] px-4 py-2 w-fit mx-auto md:mx-0 rounded-full">
       #1 Klinik gigi di Pemalang
     </p>
 
-    <h1 class="font-black text-4xl md:text-5xl leading-tight">
+    <h1 id="title" class="font-black text-4xl md:text-5xl leading-tight">
       Klinik Gigi Keluarga dengan Dokter Berpengalaman
     </h1>
 
-    <p class="text-slate-600 max-w-lg mx-auto md:mx-0">
+    <p id="description" class="text-slate-600 max-w-lg mx-auto md:mx-0">
       Klinik gigi modern dengan dokter berpengalaman, teknologi terkini, dan layanan nyaman untuk seluruh keluarga.
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+    <div id="cta" class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
       <button class="bg-[#24B9CC] text-white font-medium py-3 px-6 rounded-full hover:bg-[#24B9CC]/80 transition">
         Buat Janji Temu
       </button>
@@ -31,7 +31,7 @@ import Image from "astro/components/Image.astro";
     </div>
   </div>
 
-  <div class="flex justify-center w-full md:w-auto">
+  <div id="hero-img" class="flex justify-center w-full md:w-auto">
     <Image
       src={HeroImg}
       alt="Doctor"
@@ -42,3 +42,24 @@ import Image from "astro/components/Image.astro";
     />
   </div>
 </section>
+<script>
+  import { animate } from "animejs";
+
+  ['#tagline', '#title', '#description', '#cta'].forEach((selector, index) => {
+    animate(selector, {
+      delay: index * 200,
+      translateY: [50, 0],
+      opacity: [0, 1],
+      duration: 800,
+      easing: 'ease-out',
+    });
+  });
+
+  animate('#hero-img', {
+    delay: 200,
+    translateX: [100, 0],
+    opacity: [0, 1],
+    duration: 800,
+    easing: 'ease-out',
+  });
+</script>
